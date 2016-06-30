@@ -1,4 +1,8 @@
 /Intermediate
+/Saved
+/Binaries
 
 *.sln
 *.suo
+OpenFire.VC.VC.opendb
+OpenFire.VC.db
