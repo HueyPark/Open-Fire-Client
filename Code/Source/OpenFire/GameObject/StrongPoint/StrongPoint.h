@@ -13,14 +13,13 @@ class OPENFIRE_API AStrongPoint : public AGameObject
 	GENERATED_BODY()
 
 private:
-	UStaticMeshComponent* staticMeshComponent = nullptr;
-
-	int32 strongPointID = -1;
+	UStaticMeshComponent* staticMeshComponent;
+	FString id;
 
 public:
 	AStrongPoint();
 
-	void Initialize(int32 strongPointID);
+	void Initialize(const FString id);
 
 	UFUNCTION(Category = Default)
 	void OnInputTouchBegin(ETouchIndex::Type fingerIndex, UPrimitiveComponent* touchedComponent);

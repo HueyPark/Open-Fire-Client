@@ -36,6 +36,6 @@ void AOpenFireGameMode::Tick(float DeltaSeconds)
 		TimeManager::Instance()->RewindSeconds();
 
 		World::Graph::Instance()->OnUpdate();
-//		GameObjectManager::Instance()->OnUpdate();
+		GameObjectManager::Instance()->OnUpdate();
 	}
 }

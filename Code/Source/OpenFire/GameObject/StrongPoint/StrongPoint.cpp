@@ -22,13 +22,13 @@ AStrongPoint::AStrongPoint()
 	}
 }
 
-void AStrongPoint::Initialize(int32 strongPointID)
+void AStrongPoint::Initialize(const FString id)
 {
-	this->strongPointID = strongPointID;
+	this->id = id;
 }
 
 void AStrongPoint::OnInputTouchBegin(ETouchIndex::Type fingerIndex, UPrimitiveComponent* touchedComponent)
 {
-	FString data = "{\"strongpoint_id\":\"" + FString::FromInt(this->strongPointID) + "\"}";
+	FString data = "{\"strongpoint_id\":\"" + this->id + "\"}";
 	URestClient::Instance()->Post(Config::GAME_SERVER_URL + "/buildings", data);
 }

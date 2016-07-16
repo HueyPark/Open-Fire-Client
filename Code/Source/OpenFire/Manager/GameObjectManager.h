@@ -12,7 +12,7 @@ class OPENFIRE_API GameObjectManager : public Singleton<GameObjectManager>
 private:
 	UWorld* world = nullptr;
 
-	TMap<FString, AStrongPoint*> strongPointMap;
+	TMap<FString, AStrongPoint*> strongpointMap;
 	TMap<int32, ABuilding*> buildingMap;
 
 public:
