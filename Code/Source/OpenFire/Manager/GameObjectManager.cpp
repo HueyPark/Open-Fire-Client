@@ -20,17 +20,17 @@ void GameObjectManager::OnUpdate()
 	this->UpdateBuildings();
 }
 
-void GameObjectManager::SpawnStrongPoint(int32 nodeID, FVector location)
+void GameObjectManager::SpawnStrongPoint(const FString id, const FVector location)
 {
-	AStrongPoint* strongPoint = this->world->SpawnActor<AStrongPoint>(location, FRotator::ZeroRotator);
-	strongPoint->Initialize(nodeID);
+	//AStrongPoint* strongPoint = this->world->SpawnActor<AStrongPoint>(location, FRotator::ZeroRotator);
+	//strongPoint->Initialize(id);
 
-	this->strongPointMap.Add(nodeID, strongPoint);
+	//this->strongPointMap.Add(id, strongPoint);
 }
 
 void GameObjectManager::SpawnBuilding(int32 buildingID, int32 strongPointID, ObjectDataType type)
 {
-	const StrongPointData* strongPointData = WorldGraph::Instance()->GetStrongPointData(strongPointID);
+	const World::Strongpoint* strongPointData = World::WorldGraph::Instance()->GetStrongPointData(strongPointID);
 	if (strongPointData == nullptr)
 	{
 		return;
@@ -44,18 +44,18 @@ void GameObjectManager::SpawnBuilding(int32 buildingID, int32 strongPointID, Obj
 
 void GameObjectManager::UpdateStrongPoints()
 {
-	for (const StrongPointData& strongPointData : WorldGraph::Instance()->GetStrongPointDatas())
+	for (const World::Strongpoint& strongPointData : World::WorldGraph::Instance()->GetStrongPointDatas())
 	{
-		if (this->strongPointMap.Find(strongPointData.strongPointID) == nullptr)
+		if (this->strongPointMap.Find(strongPointData.id) == nullptr)
 		{
-			this->SpawnStrongPoint(strongPointData.strongPointID, strongPointData.location);
+			this->SpawnStrongPoint(strongPointData.id, strongPointData.location);
 		}
 	}
 }
 
 void GameObjectManager::UpdateBuildings()
 {
-	for (const BuildingData& buildingData : WorldGraph::Instance()->GetBuildingDatas())
+	for (const BuildingData& buildingData : World::WorldGraph::Instance()->GetBuildingDatas())
 	{
 		if (this->buildingMap.Find(buildingData.buildingID) == nullptr)
 		{

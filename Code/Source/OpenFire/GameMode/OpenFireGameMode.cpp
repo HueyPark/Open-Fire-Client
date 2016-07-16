@@ -23,7 +23,7 @@ void AOpenFireGameMode::InitGame(const FString& MapName, const FString& Options,
 
 	GameObjectManager::Instance()->Initialize(this->GetWorld());
 
-	WorldGraph::Instance()->Initialize(this->GetWorld());
+	World::WorldGraph::Instance()->Initialize(this->GetWorld());
 }
 
 void AOpenFireGameMode::Tick(float DeltaSeconds)
@@ -35,7 +35,7 @@ void AOpenFireGameMode::Tick(float DeltaSeconds)
 	{
 		TimeManager::Instance()->RewindSeconds();
 
-		WorldGraph::Instance()->OnUpdate();
+		World::WorldGraph::Instance()->OnUpdate();
 //		GameObjectManager::Instance()->OnUpdate();
 	}
 }

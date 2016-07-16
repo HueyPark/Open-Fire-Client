@@ -7,12 +7,15 @@
 class MissionValues;
 enum class ObjectDataType;
 
+namespace World
+{
+
 class OPENFIRE_API WorldGraph : public Singleton<WorldGraph>
 {
 private:
 	UWorld* world = nullptr;
 
-	TArray<StrongPointData> strongPointDatas;
+	TArray<Strongpoint> strongpoints;
 	TArray<BuildingData> buildingDatas;
 
 public:
@@ -20,11 +23,13 @@ public:
 
 	void OnUpdate();
 
-	const StrongPointData* GetStrongPointData(int32 nodeID);
+	const Strongpoint* GetStrongPointData(int32 nodeID);
 
-	const TArray<StrongPointData>& GetStrongPointDatas();
+	const TArray<Strongpoint>& GetStrongPointDatas();
 	const TArray<BuildingData>& GetBuildingDatas();
 
-	void InsertUpdateStrongPointData(int32 id, FVector location);
+	void InsertUpdateStrongPointData(const FString id, const FVector location);
 	void InsertUpdateBuildingData(int32 buildingID, int32 strongpointID);
 };
+
+}

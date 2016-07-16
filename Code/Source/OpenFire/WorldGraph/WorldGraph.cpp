@@ -2,6 +2,7 @@
 #include "WorldGraph.h"
 #include "WorldGraph/ObjectData/ObjectData.h"
 #include "Network/RestClient.h"
+#include "Network/DTO/IslandDTO.h"
 #include "Network/DTO/StrongPointDTO.h"
 #include "Network/DTO/BuildingDTO.h"
 #include "Type/MissionType.h"
@@ -13,52 +14,47 @@
 #include "GameObject/Resource/Gold.h"
 #include "Config/Config.h"
 
+namespace World
+{
+
 void WorldGraph::Initialize(UWorld* world)
 {
 	this->world = world;
-	this->strongPointDatas.Empty();
+	this->strongpoints.Empty();
 	this->buildingDatas.Empty();
 }
 
 void WorldGraph::OnUpdate()
 {
-	URestClient::Instance()->Get(Config::GAME_SERVER_URL + "/strongpoints", "", [this](const FString& string)
+	URestClient::Instance()->Get(Config::GAME_SERVER_URL + "/islands", "", [this](const FString& string)
 	{
-		StrongPointDTO strongPointDTO = StrongPointDTO(string);
+		UE_LOG(LogTemp, Warning, TEXT("%s"), &string);
+		DTO::Island island = DTO::Island(string);
 
-		for (const StrongPointDTO::Data& data : strongPointDTO.datas)
+		for(const DTO::Island::Strongpoint& strongpoint : island.strongpoints)
 		{
-			this->InsertUpdateStrongPointData(data.strongPointID, data.location);
-		}
-	});
-
-	URestClient::Instance()->Get(Config::GAME_SERVER_URL + "/buildings", "", [this](const FString& string)
-	{
-		BuildingDTO buildingDTO = BuildingDTO(string);
-
-		for (const BuildingDTO::Data& data : buildingDTO.datas)
-		{
-			this->InsertUpdateBuildingData(data.buildingID, data.strongPointID);
+			this->InsertUpdateStrongPointData(strongpoint.id, strongpoint.location);
 		}
 	});
 }
 
-const StrongPointData* WorldGraph::GetStrongPointData(int32 nodeID)
+const Strongpoint* WorldGraph::GetStrongPointData(int32 nodeID)
 {
-	for (StrongPointData& node : this->strongPointDatas)
-	{
-		if (node.strongPointID == nodeID)
-		{
-			return &node;
-		}
-	}
+	// TODO: Implementation
+	//for(StrongPointData& node : this->strongPointDatas)
+	//{
+	//	if(node.strongPointID == nodeID)
+	//	{
+	//		return &node;
+	//	}
+	//}
 
 	return nullptr;
 }
 
-const TArray<StrongPointData>& WorldGraph::GetStrongPointDatas()
+const TArray<Strongpoint>& WorldGraph::GetStrongPointDatas()
 {
-	return this->strongPointDatas;
+	return this->strongpoints;
 }
 
 const TArray<BuildingData>& WorldGraph::GetBuildingDatas()
@@ -66,29 +62,31 @@ const TArray<BuildingData>& WorldGraph::GetBuildingDatas()
 	return this->buildingDatas;
 }
 
-void WorldGraph::InsertUpdateStrongPointData(int32 id, FVector location)
+void WorldGraph::InsertUpdateStrongPointData(const FString id, const FVector location)
 {
-	for (StrongPointData& strongpoint : this->strongPointDatas)
+	for(Strongpoint& strongpoint : this->strongpoints)
 	{
-		if (strongpoint.strongPointID == id)
+		if(strongpoint.id == id)
 		{
 			strongpoint.location = location;
 			return;
 		}
 	}
 
-	this->strongPointDatas.Add(StrongPointData(id, location));
+	this->strongpoints.Add(Strongpoint(id, location));
 }
 
 void WorldGraph::InsertUpdateBuildingData(int32 buildingID, int32 strongpointID)
 {
-	for (BuildingData& buildingData : this->buildingDatas)
+	for(BuildingData& buildingData : this->buildingDatas)
 	{
-		if (buildingData.buildingID == buildingID)
+		if(buildingData.buildingID == buildingID)
 		{
 			return;
 		}
 	}
 
 	this->buildingDatas.Add(BuildingData(buildingID, strongpointID));
+}
+
 }
