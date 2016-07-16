@@ -2,5 +2,5 @@
 
 namespace Config
 {
-	const FString GAME_SERVER_URL = "http://localhost:9000";
+	const FString GAME_SERVER_URL = "http://localhost:5000";
 }
