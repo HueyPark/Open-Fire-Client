@@ -15,11 +15,12 @@ class OPENFIRE_API AStrongPoint : public AGameObject
 private:
 	UStaticMeshComponent* staticMeshComponent;
 	FString id;
+	int32 level;
 
 public:
 	AStrongPoint();
 
-	void Initialize(const FString id);
+	void Initialize(const FString id, const int32 level);
 
 	UFUNCTION(Category = Default)
 	void OnInputTouchBegin(ETouchIndex::Type fingerIndex, UPrimitiveComponent* touchedComponent);

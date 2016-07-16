@@ -22,9 +22,10 @@ AStrongPoint::AStrongPoint()
 	}
 }
 
-void AStrongPoint::Initialize(const FString id)
+void AStrongPoint::Initialize(const FString id, const int32 level)
 {
 	this->id = id;
+	this->level = level;
 }
 
 void AStrongPoint::OnInputTouchBegin(ETouchIndex::Type fingerIndex, UPrimitiveComponent* touchedComponent)

@@ -28,12 +28,11 @@ void Graph::OnUpdate()
 {
 	URestClient::Instance()->Get(Config::GAME_SERVER_URL + "/islands", "", [this](const FString& string)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("%s"), &string);
 		DTO::Island island = DTO::Island(string);
 
 		for(const DTO::Island::Strongpoint& strongpoint : island.strongpoints)
 		{
-			this->InsertUpdateStrongPointData(strongpoint.id, strongpoint.location);
+			this->InsertUpdateStrongPointData(strongpoint.id, strongpoint.location, strongpoint.level);
 		}
 	});
 }
@@ -62,7 +61,7 @@ const TArray<BuildingData>& Graph::GetBuildingDatas()
 	return this->buildingDatas;
 }
 
-void Graph::InsertUpdateStrongPointData(const FString id, const FVector location)
+void Graph::InsertUpdateStrongPointData(const FString id, const FVector location, const int32 level)
 {
 	for(Strongpoint& strongpoint : this->strongpoints)
 	{
@@ -73,7 +72,7 @@ void Graph::InsertUpdateStrongPointData(const FString id, const FVector location
 		}
 	}
 
-	this->strongpoints.Add(Strongpoint(id, location));
+	this->strongpoints.Add(Strongpoint(id, location, level));
 }
 
 void Graph::InsertUpdateBuildingData(int32 buildingID, int32 strongpointID)

@@ -28,7 +28,7 @@ public:
 	const TArray<Strongpoint>& GetStrongPointDatas();
 	const TArray<BuildingData>& GetBuildingDatas();
 
-	void InsertUpdateStrongPointData(const FString id, const FVector location);
+	void InsertUpdateStrongPointData(const FString id, const FVector location, const int32 level);
 	void InsertUpdateBuildingData(int32 buildingID, int32 strongpointID);
 };
 

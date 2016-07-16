@@ -10,7 +10,7 @@ enum class ObjectDataType;
 class OPENFIRE_API GameObjectManager : public Singleton<GameObjectManager>
 {
 private:
-	UWorld* world = nullptr;
+	UWorld* world;
 
 	TMap<FString, AStrongPoint*> strongpointMap;
 	TMap<int32, ABuilding*> buildingMap;
@@ -21,7 +21,7 @@ public:
 	void OnUpdate();
 
 private:
-	void SpawnStrongPoint(const FString id, const FVector location);
+	void SpawnStrongPoint(const FString id, const FVector location, const int32 level);
 	void SpawnBuilding(int32 buildingID, int32 strongPointID, ObjectDataType type);
 
 	void UpdateStrongPoints();
