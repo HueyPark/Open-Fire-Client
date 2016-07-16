@@ -2,7 +2,7 @@
 
 #include "OpenFire.h"
 #include "Hero.h"
-#include "WorldGraph/WorldGraph.h"
+#include "WorldGraph/Graph.h"
 #include "WorldGraph/StrongPointData.h"
 #include "WorldGraph/ObjectData/ObjectData.h"
 

@@ -5,7 +5,7 @@
 #include "OpenFirePlayerController.h"
 #include "GameObject/StrongPoint/StrongPoint.h"
 #include "GameObject/StrongPoint/StrongPointEdge.h"
-#include "WorldGraph/WorldGraph.h"
+#include "WorldGraph/Graph.h"
 #include "WorldGraph/StrongPointData.h"
 #include "Manager/TimeManager.h"
 #include "Manager/GameObjectManager.h"
@@ -23,7 +23,7 @@ void AOpenFireGameMode::InitGame(const FString& MapName, const FString& Options,
 
 	GameObjectManager::Instance()->Initialize(this->GetWorld());
 
-	World::WorldGraph::Instance()->Initialize(this->GetWorld());
+	World::Graph::Instance()->Initialize(this->GetWorld());
 }
 
 void AOpenFireGameMode::Tick(float DeltaSeconds)
@@ -35,7 +35,7 @@ void AOpenFireGameMode::Tick(float DeltaSeconds)
 	{
 		TimeManager::Instance()->RewindSeconds();
 
-		World::WorldGraph::Instance()->OnUpdate();
+		World::Graph::Instance()->OnUpdate();
 //		GameObjectManager::Instance()->OnUpdate();
 	}
 }

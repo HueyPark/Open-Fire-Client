@@ -1,5 +1,5 @@
 #include "OpenFire.h"
-#include "WorldGraph.h"
+#include "Graph.h"
 #include "WorldGraph/ObjectData/ObjectData.h"
 #include "Network/RestClient.h"
 #include "Network/DTO/IslandDTO.h"
@@ -17,14 +17,14 @@
 namespace World
 {
 
-void WorldGraph::Initialize(UWorld* world)
+void Graph::Initialize(UWorld* world)
 {
 	this->world = world;
 	this->strongpoints.Empty();
 	this->buildingDatas.Empty();
 }
 
-void WorldGraph::OnUpdate()
+void Graph::OnUpdate()
 {
 	URestClient::Instance()->Get(Config::GAME_SERVER_URL + "/islands", "", [this](const FString& string)
 	{
@@ -38,7 +38,7 @@ void WorldGraph::OnUpdate()
 	});
 }
 
-const Strongpoint* WorldGraph::GetStrongPointData(int32 nodeID)
+const Strongpoint* Graph::GetStrongPointData(int32 nodeID)
 {
 	// TODO: Implementation
 	//for(StrongPointData& node : this->strongPointDatas)
@@ -52,17 +52,17 @@ const Strongpoint* WorldGraph::GetStrongPointData(int32 nodeID)
 	return nullptr;
 }
 
-const TArray<Strongpoint>& WorldGraph::GetStrongPointDatas()
+const TArray<Strongpoint>& Graph::GetStrongPointDatas()
 {
 	return this->strongpoints;
 }
 
-const TArray<BuildingData>& WorldGraph::GetBuildingDatas()
+const TArray<BuildingData>& Graph::GetBuildingDatas()
 {
 	return this->buildingDatas;
 }
 
-void WorldGraph::InsertUpdateStrongPointData(const FString id, const FVector location)
+void Graph::InsertUpdateStrongPointData(const FString id, const FVector location)
 {
 	for(Strongpoint& strongpoint : this->strongpoints)
 	{
@@ -76,7 +76,7 @@ void WorldGraph::InsertUpdateStrongPointData(const FString id, const FVector loc
 	this->strongpoints.Add(Strongpoint(id, location));
 }
 
-void WorldGraph::InsertUpdateBuildingData(int32 buildingID, int32 strongpointID)
+void Graph::InsertUpdateBuildingData(int32 buildingID, int32 strongpointID)
 {
 	for(BuildingData& buildingData : this->buildingDatas)
 	{

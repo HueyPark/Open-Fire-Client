@@ -1,6 +1,6 @@
 #include "OpenFire.h"
 #include "GameObjectManager.h"
-#include "WorldGraph/WorldGraph.h"
+#include "WorldGraph/Graph.h"
 #include "WorldGraph/StrongPointData.h"
 #include "GameObject/StrongPoint/StrongPoint.h"
 #include "GameObject/Building/Building.h"
@@ -30,7 +30,7 @@ void GameObjectManager::SpawnStrongPoint(const FString id, const FVector locatio
 
 void GameObjectManager::SpawnBuilding(int32 buildingID, int32 strongPointID, ObjectDataType type)
 {
-	const World::Strongpoint* strongPointData = World::WorldGraph::Instance()->GetStrongPointData(strongPointID);
+	const World::Strongpoint* strongPointData = World::Graph::Instance()->GetStrongPointData(strongPointID);
 	if (strongPointData == nullptr)
 	{
 		return;
@@ -44,7 +44,7 @@ void GameObjectManager::SpawnBuilding(int32 buildingID, int32 strongPointID, Obj
 
 void GameObjectManager::UpdateStrongPoints()
 {
-	for (const World::Strongpoint& strongPointData : World::WorldGraph::Instance()->GetStrongPointDatas())
+	for (const World::Strongpoint& strongPointData : World::Graph::Instance()->GetStrongPointDatas())
 	{
 		if (this->strongPointMap.Find(strongPointData.id) == nullptr)
 		{
@@ -55,7 +55,7 @@ void GameObjectManager::UpdateStrongPoints()
 
 void GameObjectManager::UpdateBuildings()
 {
-	for (const BuildingData& buildingData : World::WorldGraph::Instance()->GetBuildingDatas())
+	for (const BuildingData& buildingData : World::Graph::Instance()->GetBuildingDatas())
 	{
 		if (this->buildingMap.Find(buildingData.buildingID) == nullptr)
 		{

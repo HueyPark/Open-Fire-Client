@@ -1,6 +1,6 @@
 #include "OpenFire.h"
 #include "StrongPoint.h"
-#include "WorldGraph/WorldGraph.h"
+#include "WorldGraph/Graph.h"
 #include "WorldGraph/StrongPointData.h"
 #include "Network/RestClient.h"
 #include "Config/Config.h"

@@ -10,7 +10,7 @@ enum class ObjectDataType;
 namespace World
 {
 
-class OPENFIRE_API WorldGraph : public Singleton<WorldGraph>
+class OPENFIRE_API Graph : public Singleton<Graph>
 {
 private:
 	UWorld* world = nullptr;

@@ -2,7 +2,7 @@
 
 #include "OpenFire.h"
 #include "Worker.h"
-#include "WorldGraph/WorldGraph.h"
+#include "WorldGraph/Graph.h"
 #include "WorldGraph/StrongPointData.h"
 
 AWorker::AWorker()

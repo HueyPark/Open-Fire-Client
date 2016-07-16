@@ -2,7 +2,7 @@
 
 #include "OpenFire.h"
 #include "ObjectData.h"
-#include "WorldGraph/WorldGraph.h"
+#include "WorldGraph/Graph.h"
 #include "WorldGraph/StrongPointData.h"
 
 void ObjectData::SetNodeID(int32 strongPointID)
