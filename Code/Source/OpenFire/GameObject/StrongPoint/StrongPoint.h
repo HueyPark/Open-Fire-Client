@@ -24,4 +24,7 @@ public:
 
 	UFUNCTION(Category = Default)
 	void OnInputTouchBegin(ETouchIndex::Type fingerIndex, UPrimitiveComponent* touchedComponent);
+
+private:
+	FLinearColor _GetColor();
 };
