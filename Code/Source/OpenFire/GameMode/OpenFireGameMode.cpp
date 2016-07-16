@@ -21,21 +21,21 @@ void AOpenFireGameMode::InitGame(const FString& MapName, const FString& Options,
 {
 	Super::InitGame(MapName, Options, ErrorMessage);
 
-	//GameObjectManager::Instance()->Initialize(this->GetWorld());
+	GameObjectManager::Instance()->Initialize(this->GetWorld());
 
-	//WorldGraph::Instance()->Initialize(this->GetWorld());
+	WorldGraph::Instance()->Initialize(this->GetWorld());
 }
 
 void AOpenFireGameMode::Tick(float DeltaSeconds)
 {
-	//TimeManager::Instance()->AddSeconds(DeltaSeconds);
+	TimeManager::Instance()->AddSeconds(DeltaSeconds);
 
-	//float remainingSeconds = TimeManager::Instance()->GetRemainingSeconds();
-	//if (remainingSeconds < 0.0f)
-	//{
-	//	TimeManager::Instance()->RewindSeconds();
+	float remainingSeconds = TimeManager::Instance()->GetRemainingSeconds();
+	if (remainingSeconds < 0.0f)
+	{
+		TimeManager::Instance()->RewindSeconds();
 
-	//	WorldGraph::Instance()->OnUpdate();
-	//	GameObjectManager::Instance()->OnUpdate();
-	//}
+		WorldGraph::Instance()->OnUpdate();
+//		GameObjectManager::Instance()->OnUpdate();
+	}
 }
