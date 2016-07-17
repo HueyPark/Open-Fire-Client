@@ -1,7 +1,7 @@
 // Free to use
 
 #include "OpenFire.h"
-#include "IslandDTO.h"
+#include "Island.h"
 #include "Type/Request.h"
 
 namespace DTO

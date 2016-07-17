@@ -2,7 +2,7 @@
 #include "Graph.h"
 #include "WorldGraph/ObjectData/ObjectData.h"
 #include "Network/RestClient.h"
-#include "Network/DTO/IslandDTO.h"
+#include "Network/DTO/Island.h"
 #include "Network/DTO/StrongPointDTO.h"
 #include "Network/DTO/BuildingDTO.h"
 #include "Type/MissionType.h"
