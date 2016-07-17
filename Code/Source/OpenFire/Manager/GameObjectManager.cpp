@@ -2,9 +2,9 @@
 #include "GameObjectManager.h"
 #include "WorldGraph/Graph.h"
 #include "WorldGraph/StrongPointData.h"
-#include "GameObject/StrongPoint/StrongPoint.h"
 #include "GameObject/Building/Building.h"
 #include "GameObject/Building/Castle.h"
+#include "GameObject/Strongpoint/Strongpoint.h"
 #include "WorldGraph/ObjectData/ObjectData.h"
 
 void GameObjectManager::Initialize(UWorld* world)
@@ -22,7 +22,7 @@ void GameObjectManager::OnUpdate()
 
 void GameObjectManager::SpawnStrongPoint(const FString id, const FVector location, const int32 level, const Request request)
 {
-	AStrongPoint* strongPoint = this->world->SpawnActor<AStrongPoint>(location, FRotator::ZeroRotator);
+	AStrongpoint* strongPoint = this->world->SpawnActor<AStrongpoint>(location, FRotator::ZeroRotator);
 	strongPoint->Initialize(id, level, request);
 
 	this->strongpointMap.Add(id, strongPoint);

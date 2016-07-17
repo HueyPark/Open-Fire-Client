@@ -9,7 +9,7 @@ class UStaticMeshComponent;
 enum class Request;
 
 UCLASS()
-class OPENFIRE_API AStrongPoint : public AGameObject
+class OPENFIRE_API AStrongpoint : public AGameObject
 {
 	GENERATED_BODY()
 
@@ -20,7 +20,7 @@ private:
 	Request request;
 
 public:
-	AStrongPoint();
+	AStrongpoint();
 
 	void Initialize(const FString id, const int32 level, const Request request);
 

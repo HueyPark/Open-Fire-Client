@@ -2,7 +2,7 @@
 
 #include "Framework/Singleton.h"
 
-class AStrongPoint;
+class AStrongpoint;
 class AGameObject;
 class ABuilding;
 enum class ObjectDataType;
@@ -13,7 +13,7 @@ class OPENFIRE_API GameObjectManager : public Singleton<GameObjectManager>
 private:
 	UWorld* world;
 
-	TMap<FString, AStrongPoint*> strongpointMap;
+	TMap<FString, AStrongpoint*> strongpointMap;
 	TMap<int32, ABuilding*> buildingMap;
 
 public:
