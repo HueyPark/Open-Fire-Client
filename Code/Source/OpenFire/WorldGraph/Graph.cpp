@@ -32,7 +32,7 @@ void Graph::OnUpdate()
 
 		for(const DTO::Island::Strongpoint& strongpoint : island.strongpoints)
 		{
-			this->InsertUpdateStrongPointData(strongpoint.id, strongpoint.location, strongpoint.level);
+			this->InsertUpdateStrongPointData(strongpoint.id, strongpoint.location, strongpoint.level, strongpoint.request);
 		}
 	});
 }
@@ -61,7 +61,7 @@ const TArray<BuildingData>& Graph::GetBuildingDatas()
 	return this->buildingDatas;
 }
 
-void Graph::InsertUpdateStrongPointData(const FString id, const FVector location, const int32 level)
+void Graph::InsertUpdateStrongPointData(const FString id, const FVector location, const int32 level, const Request request)
 {
 	for(Strongpoint& strongpoint : this->strongpoints)
 	{
@@ -72,7 +72,7 @@ void Graph::InsertUpdateStrongPointData(const FString id, const FVector location
 		}
 	}
 
-	this->strongpoints.Add(Strongpoint(id, location, level));
+	this->strongpoints.Add(Strongpoint(id, location, level, request));
 }
 
 void Graph::InsertUpdateBuildingData(int32 buildingID, int32 strongpointID)

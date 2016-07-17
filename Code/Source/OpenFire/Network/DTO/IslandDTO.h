@@ -2,6 +2,8 @@
 
 #pragma once
 
+enum class Request;
+
 namespace DTO
 {
 
@@ -10,9 +12,10 @@ class Island
 public:
 	struct Strongpoint
 	{
-		FString id = "";
-		FVector location = FVector::ZeroVector;
-		int32 level = 0;
+		FString id;
+		FVector location;
+		int32 level;
+		Request request;
 	};
 
 public:

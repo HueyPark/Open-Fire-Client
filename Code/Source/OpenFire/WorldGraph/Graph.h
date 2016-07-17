@@ -6,6 +6,7 @@
 
 class MissionValues;
 enum class ObjectDataType;
+enum class Request;
 
 namespace World
 {
@@ -28,7 +29,7 @@ public:
 	const TArray<Strongpoint>& GetStrongPointDatas();
 	const TArray<BuildingData>& GetBuildingDatas();
 
-	void InsertUpdateStrongPointData(const FString id, const FVector location, const int32 level);
+	void InsertUpdateStrongPointData(const FString id, const FVector location, const int32 level, const Request request);
 	void InsertUpdateBuildingData(int32 buildingID, int32 strongpointID);
 };
 

@@ -22,10 +22,11 @@ AStrongPoint::AStrongPoint()
 	}
 }
 
-void AStrongPoint::Initialize(const FString id, const int32 level)
+void AStrongPoint::Initialize(const FString id, const int32 level, const Request request)
 {
 	this->id = id;
 	this->level = level;
+	this->request = request;
 
 	const int32 materialIndex = 0;
 	UMaterialInstanceDynamic* materialInstanceDynamic = UMaterialInstanceDynamic::Create(this->staticMeshComponent->GetMaterial(materialIndex), this);

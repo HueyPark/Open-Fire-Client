@@ -2,6 +2,7 @@
 
 #include "OpenFire.h"
 #include "IslandDTO.h"
+#include "Type/Request.h"
 
 namespace DTO
 {
@@ -23,7 +24,9 @@ Island::Island(const FString& string)
 			strongpoint.id = jsonObject->GetStringField("id");
 			strongpoint.location.X = jsonObject->GetNumberField("x");
 			strongpoint.location.Y = jsonObject->GetNumberField("y");
+			strongpoint.location.Z = 0.0f;
 			strongpoint.level = jsonObject->GetIntegerField("level");
+			strongpoint.request = static_cast<Request>(jsonObject->GetIntegerField("request"));
 
 			strongpoints.Add(strongpoint);
 		}

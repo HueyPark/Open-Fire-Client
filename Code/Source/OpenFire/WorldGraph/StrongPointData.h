@@ -5,6 +5,7 @@
 class ObjectData;
 class BuildingData;
 class ResourceData;
+enum class Request;
 
 namespace World
 {
@@ -15,17 +16,13 @@ public:
 	FString id;
 	FVector location;
 	int32 level;
+	Request request;
 
 private:
 	BuildingData* buildingData = nullptr;
 
 public:
-	Strongpoint(const FString id, const FVector location, const int32 level)
-	{
-		this->id = id;
-		this->location = location;
-		this->level = level;
-	};
+	Strongpoint(const FString id, const FVector location, const int32 level, const Request request);	
 };
 
 }

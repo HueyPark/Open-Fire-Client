@@ -6,6 +6,7 @@
 #include "StrongPoint.generated.h"
 
 class UStaticMeshComponent;
+enum class Request;
 
 UCLASS()
 class OPENFIRE_API AStrongPoint : public AGameObject
@@ -16,11 +17,12 @@ private:
 	UStaticMeshComponent* staticMeshComponent;
 	FString id;
 	int32 level;
+	Request request;
 
 public:
 	AStrongPoint();
 
-	void Initialize(const FString id, const int32 level);
+	void Initialize(const FString id, const int32 level, const Request request);
 
 	UFUNCTION(Category = Default)
 	void OnInputTouchBegin(ETouchIndex::Type fingerIndex, UPrimitiveComponent* touchedComponent);

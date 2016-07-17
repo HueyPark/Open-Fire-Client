@@ -20,10 +20,10 @@ void GameObjectManager::OnUpdate()
 	this->UpdateBuildings();
 }
 
-void GameObjectManager::SpawnStrongPoint(const FString id, const FVector location, const int32 level)
+void GameObjectManager::SpawnStrongPoint(const FString id, const FVector location, const int32 level, const Request request)
 {
 	AStrongPoint* strongPoint = this->world->SpawnActor<AStrongPoint>(location, FRotator::ZeroRotator);
-	strongPoint->Initialize(id, level);
+	strongPoint->Initialize(id, level, request);
 
 	this->strongpointMap.Add(id, strongPoint);
 }
@@ -48,7 +48,7 @@ void GameObjectManager::UpdateStrongPoints()
 	{
 		if (this->strongpointMap.Find(strongpoint.id) == nullptr)
 		{
-			this->SpawnStrongPoint(strongpoint.id, strongpoint.location, strongpoint.level);
+			this->SpawnStrongPoint(strongpoint.id, strongpoint.location, strongpoint.level, strongpoint.request);
 		}
 	}
 }

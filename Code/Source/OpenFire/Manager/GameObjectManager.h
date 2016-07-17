@@ -6,6 +6,7 @@ class AStrongPoint;
 class AGameObject;
 class ABuilding;
 enum class ObjectDataType;
+enum class Request;
 
 class OPENFIRE_API GameObjectManager : public Singleton<GameObjectManager>
 {
@@ -21,7 +22,7 @@ public:
 	void OnUpdate();
 
 private:
-	void SpawnStrongPoint(const FString id, const FVector location, const int32 level);
+	void SpawnStrongPoint(const FString id, const FVector location, const int32 level, const Request request);
 	void SpawnBuilding(int32 buildingID, int32 strongPointID, ObjectDataType type);
 
 	void UpdateStrongPoints();
