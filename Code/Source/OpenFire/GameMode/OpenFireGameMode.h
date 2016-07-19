@@ -3,13 +3,15 @@
 #include "GameFramework/GameMode.h"
 #include "OpenFireGameMode.generated.h"
 
+class UGameObjectManager;
+
 UCLASS()
 class OPENFIRE_API AOpenFireGameMode : public AGameMode
 {
 	GENERATED_BODY()
 
 private:
-	float accumulatedSeconds = 0.0f;
+	UGameObjectManager* gameObjectManager;
 
 public:
 	AOpenFireGameMode();
