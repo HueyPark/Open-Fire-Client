@@ -19,7 +19,7 @@ void UGameObjectManager::OnUpdate()
 void UGameObjectManager::_SpawnStrongPoint(const FString id, const FVector location, const int32 level, const Request request)
 {
 	AStrongpoint* strongPoint = this->world->SpawnActor<AStrongpoint>(CLASS_Strongpoint, location, FRotator::ZeroRotator);
-	strongPoint->Initialize(id, level, request);
+	strongPoint->Init(id, level, request);
 
 	this->strongpointMap.Add(id, strongPoint);
 }

@@ -2,7 +2,7 @@
 
 #pragma once
 
-enum class Request;
+enum class Request : uint8;
 
 namespace DTO
 {

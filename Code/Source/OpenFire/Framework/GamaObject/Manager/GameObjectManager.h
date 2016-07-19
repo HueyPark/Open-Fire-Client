@@ -6,7 +6,7 @@
 #include "GameObjectManager.generated.h"
 
 class AStrongpoint;
-enum class Request;
+enum class Request : uint8;
 
 UCLASS()
 class OPENFIRE_API UGameObjectManager : public UObject

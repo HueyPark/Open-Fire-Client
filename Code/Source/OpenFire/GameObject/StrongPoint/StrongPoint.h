@@ -3,26 +3,37 @@
 #pragma once
 
 #include "GameObject/GameObject.h"
+#include "Type/Request.h"
 #include "StrongPoint.generated.h"
 
 class UStaticMeshComponent;
-enum class Request;
+enum class Request : uint8;
 
 UCLASS()
 class OPENFIRE_API AStrongpoint : public AGameObject
 {
 	GENERATED_BODY()
 
-private:
+protected:
 	UStaticMeshComponent* staticMeshComponent;
+
+	UPROPERTY(BlueprintReadOnly)
 	FString id;
+
+	UPROPERTY(BlueprintReadOnly)
 	int32 level;
-	Request request;
+
+	UPROPERTY(BlueprintReadOnly)
+	ERequest request;
 
 public:
 	AStrongpoint();
 
-	void Initialize(const FString id, const int32 level, const Request request);
+	void Init(const FString id, const int32 level, const Request request);
+
+	UFUNCTION(BlueprintNativeEvent)
+	void AfterInit();
+	virtual void AfterInit_Implementation();
 
 	UFUNCTION(Category = Default)
 	void OnInputTouchBegin(ETouchIndex::Type fingerIndex, UPrimitiveComponent* touchedComponent);

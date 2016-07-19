@@ -22,16 +22,23 @@ AStrongpoint::AStrongpoint()
 	}
 }
 
-void AStrongpoint::Initialize(const FString id, const int32 level, const Request request)
+void AStrongpoint::Init(const FString id, const int32 level, const Request request)
 {
 	this->id = id;
 	this->level = level;
-	this->request = request;
+	this->request = static_cast<ERequest>(request);
 
 	const int32 materialIndex = 0;
 	UMaterialInstanceDynamic* materialInstanceDynamic = UMaterialInstanceDynamic::Create(this->staticMeshComponent->GetMaterial(materialIndex), this);
 	materialInstanceDynamic->SetVectorParameterValue("Color", this->_GetColor());
 	this->staticMeshComponent->SetMaterial(materialIndex, materialInstanceDynamic);
+
+	this->AfterInit();
+}
+
+void AStrongpoint::AfterInit_Implementation()
+{
+
 }
 
 void AStrongpoint::OnInputTouchBegin(ETouchIndex::Type fingerIndex, UPrimitiveComponent* touchedComponent)

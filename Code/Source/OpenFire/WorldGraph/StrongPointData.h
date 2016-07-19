@@ -5,7 +5,7 @@
 class ObjectData;
 class BuildingData;
 class ResourceData;
-enum class Request;
+enum class Request : uint8;
 
 namespace World
 {

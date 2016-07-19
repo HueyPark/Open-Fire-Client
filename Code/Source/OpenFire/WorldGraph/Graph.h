@@ -6,7 +6,7 @@
 
 class MissionValues;
 enum class ObjectDataType;
-enum class Request;
+enum class Request : uint8;
 
 namespace World
 {
