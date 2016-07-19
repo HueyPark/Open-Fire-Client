@@ -15,12 +15,13 @@ const float updateSeconds = 5.0f;
 AOpenFireGameMode::AOpenFireGameMode()
 {
 	this->PlayerControllerClass = AOpenFirePlayerController::StaticClass();
-	this->gameObjectManager = NewObject<UGameObjectManager>(UGameObjectManager::StaticClass());
 }
 
 void AOpenFireGameMode::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
 {
 	Super::InitGame(MapName, Options, ErrorMessage);
+
+	this->gameObjectManager = NewObject<UGameObjectManager>(UGameObjectManager::StaticClass());
 
 	this->gameObjectManager->Init(this->GetWorld());
 

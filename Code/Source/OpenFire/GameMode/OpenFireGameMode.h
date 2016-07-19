@@ -10,7 +10,8 @@ class OPENFIRE_API AOpenFireGameMode : public AGameMode
 {
 	GENERATED_BODY()
 
-private:
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UGameObjectManager* gameObjectManager;
 
 public:

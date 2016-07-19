@@ -13,6 +13,10 @@ class OPENFIRE_API UGameObjectManager : public UObject
 {
 	GENERATED_BODY()
 
+public:
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TSubclassOf<AStrongpoint> CLASS_Strongpoint;
+
 private:
 	UWorld* world;
 
