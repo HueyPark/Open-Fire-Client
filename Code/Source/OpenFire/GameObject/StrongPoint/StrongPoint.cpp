@@ -9,17 +9,6 @@ AStrongpoint::AStrongpoint()
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
-	this->staticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("VisualRepresentation"));
-	this->RootComponent = this->staticMeshComponent;
-
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> StaticMesh(TEXT("/Game/Resource/World/Strongpoint/SM_Strongpoint"));
-	if(StaticMesh.Succeeded())
-	{
-		this->staticMeshComponent->SetStaticMesh(StaticMesh.Object);
-		this->staticMeshComponent->SetRelativeScale3D(FVector(1.0f, 1.0f, 0.5f));
-		this->staticMeshComponent->OnInputTouchBegin.AddDynamic(this, &AStrongpoint::OnInputTouchBegin);
-	}
 }
 
 void AStrongpoint::Init(const FString id, const int32 level, const Request request)
@@ -28,17 +17,12 @@ void AStrongpoint::Init(const FString id, const int32 level, const Request reque
 	this->level = level;
 	this->request = static_cast<ERequest>(request);
 
-	const int32 materialIndex = 0;
-	UMaterialInstanceDynamic* materialInstanceDynamic = UMaterialInstanceDynamic::Create(this->staticMeshComponent->GetMaterial(materialIndex), this);
-	materialInstanceDynamic->SetVectorParameterValue("Color", this->_GetColor());
-	this->staticMeshComponent->SetMaterial(materialIndex, materialInstanceDynamic);
+	//const int32 materialIndex = 0;
+	//UMaterialInstanceDynamic* materialInstanceDynamic = UMaterialInstanceDynamic::Create(this->staticMeshComponent->GetMaterial(materialIndex), this);
+	//materialInstanceDynamic->SetVectorParameterValue("Color", this->_GetColor());
+	//this->staticMeshComponent->SetMaterial(materialIndex, materialInstanceDynamic);
 
-	this->AfterInit();
-}
-
-void AStrongpoint::AfterInit_Implementation()
-{
-
+	this->PostInit(this->id, this->level, this->request);
 }
 
 void AStrongpoint::OnInputTouchBegin(ETouchIndex::Type fingerIndex, UPrimitiveComponent* touchedComponent)

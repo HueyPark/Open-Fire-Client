@@ -15,15 +15,8 @@ class OPENFIRE_API AStrongpoint : public AGameObject
 	GENERATED_BODY()
 
 protected:
-	UStaticMeshComponent* staticMeshComponent;
-
-	UPROPERTY(BlueprintReadOnly)
 	FString id;
-
-	UPROPERTY(BlueprintReadOnly)
 	int32 level;
-
-	UPROPERTY(BlueprintReadOnly)
 	ERequest request;
 
 public:
@@ -31,13 +24,13 @@ public:
 
 	void Init(const FString id, const int32 level, const Request request);
 
-	UFUNCTION(BlueprintNativeEvent)
-	void AfterInit();
-	virtual void AfterInit_Implementation();
+	UFUNCTION(BlueprintImplementableEvent)
+	void PostInit(const FString& id, const int32& level, const ERequest& request);
 
 	UFUNCTION(Category = Default)
 	void OnInputTouchBegin(ETouchIndex::Type fingerIndex, UPrimitiveComponent* touchedComponent);
 
-private:
+protected:
+	UFUNCTION(BlueprintCallable, Category = "AStrongpoint")
 	FLinearColor _GetColor();
 };
