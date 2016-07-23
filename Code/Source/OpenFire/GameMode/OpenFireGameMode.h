@@ -4,15 +4,19 @@
 #include "OpenFireGameMode.generated.h"
 
 class UGameObjectManager;
+class UWorldGraph;
 
 UCLASS()
 class OPENFIRE_API AOpenFireGameMode : public AGameMode
 {
 	GENERATED_BODY()
 
-public:
+protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UGameObjectManager* gameObjectManager;
+
+private:
+	UWorldGraph* worldGraph;
 
 public:
 	AOpenFireGameMode();
