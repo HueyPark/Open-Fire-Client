@@ -22,14 +22,14 @@ private:
 	UWorld* world;
 	UWorldGraph* WorldGraph;
 
-	TMap<FString, AStrongpoint*> strongpointMap;
+	TMap<int32, AStrongpoint*> StrongPointMap;
 
 public:
 	void Init(UWorld* world, UWorldGraph* WorldGraph);
 	void OnUpdate();
 
 private:
-	void _SpawnStrongPoint(const FString id, const FVector location, const int32 level, const Request request);
+	void _SpawnStrongPoint(const int32 Id, const FVector Location, const int32 Level);
 
 	void _UpdateStrongPoints();
 };

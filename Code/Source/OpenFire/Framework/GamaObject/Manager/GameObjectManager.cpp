@@ -3,6 +3,8 @@
 #include "OpenFire.h"
 #include "GameObjectManager.h"
 
+#include "Framework/WorldGraph/Model/Strongpoint/StrongpointModel.h"
+#include "Framework/WorldGraph/WorldGraph.h"
 #include "GameObject/Strongpoint/Strongpoint.h"
 #include "WorldGraph/Graph.h"
 
@@ -17,21 +19,21 @@ void UGameObjectManager::OnUpdate()
 	this->_UpdateStrongPoints();
 }
 
-void UGameObjectManager::_SpawnStrongPoint(const FString id, const FVector location, const int32 level, const Request request)
+void UGameObjectManager::_SpawnStrongPoint(const int32 Id, const FVector Location, const int32 Level)
 {
-	AStrongpoint* strongPoint = this->world->SpawnActor<AStrongpoint>(CLASS_Strongpoint, location, FRotator::ZeroRotator);
-	strongPoint->Init(id, level, request);
+	AStrongpoint* StrongPoint = this->world->SpawnActor<AStrongpoint>(CLASS_Strongpoint, Location, FRotator::ZeroRotator);
+	StrongPoint->Init(Id, Level);
 
-	this->strongpointMap.Add(id, strongPoint);
+	this->StrongPointMap.Add(Id, StrongPoint);
 }
 
 void UGameObjectManager::_UpdateStrongPoints()
 {
-	for (const World::Strongpoint& strongpoint : World::Graph::Instance()->GetStrongPointDatas())
+	for (const UStrongpointModel* Model : this->WorldGraph->GetStrongPointModels())
 	{
-		if (this->strongpointMap.Find(strongpoint.id) == nullptr)
+		if (this->StrongPointMap.Find(Model->Id) == nullptr)
 		{
-			this->_SpawnStrongPoint(strongpoint.id, strongpoint.location, strongpoint.level, strongpoint.request);
+			this->_SpawnStrongPoint(Model->Id, Model->Location, 1);
 		}
 	}
 }

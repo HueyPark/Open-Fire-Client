@@ -3,10 +3,8 @@
 #include "OpenFire.h"
 #include "StrongpointModel.h"
 
-StrongpointModel::StrongpointModel()
+void UStrongpointModel::Init(int32 Id, const FVector Location)
 {
-}
-
-StrongpointModel::~StrongpointModel()
-{
+	this->Id = Id;
+	this->Location = Location;
 }

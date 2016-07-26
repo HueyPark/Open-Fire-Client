@@ -2,9 +2,18 @@
 
 #pragma once
 
-class OPENFIRE_API StrongpointModel
+#include "Object.h"
+#include "StrongPointModel.generated.h"
+
+UCLASS()
+class OPENFIRE_API UStrongpointModel : public UObject
 {
+	GENERATED_BODY()
+
 public:
-	StrongpointModel();
-	~StrongpointModel();
+	int32 Id;
+	FVector Location;
+
+public:
+	void Init(int32 Id, const FVector Location);
 };

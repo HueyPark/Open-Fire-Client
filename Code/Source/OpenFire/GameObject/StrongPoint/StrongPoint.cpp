@@ -11,29 +11,17 @@ AStrongpoint::AStrongpoint()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
-void AStrongpoint::Init(const FString id, const int32 level, const Request request)
+void AStrongpoint::Init(const int32 Id, const int32 Level)
 {
-	this->id = id;
-	this->level = level;
-	this->request = static_cast<ERequest>(request);
+	this->Id = Id;
+	this->Level = Level;
 
-	//const int32 materialIndex = 0;
-	//UMaterialInstanceDynamic* materialInstanceDynamic = UMaterialInstanceDynamic::Create(this->staticMeshComponent->GetMaterial(materialIndex), this);
-	//materialInstanceDynamic->SetVectorParameterValue("Color", this->_GetColor());
-	//this->staticMeshComponent->SetMaterial(materialIndex, materialInstanceDynamic);
-
-	this->PostInit(this->id, this->level, this->request);
-}
-
-void AStrongpoint::OnInputTouchBegin(ETouchIndex::Type fingerIndex, UPrimitiveComponent* touchedComponent)
-{
-	FString data = "{\"strongpoint_id\":\"" + this->id + "\"}";
-	URestClient::Instance()->Post(Config::GAME_SERVER_URL + "/buildings", data);
+	this->PostInit(this->Id, this->Level);
 }
 
 FLinearColor AStrongpoint::_GetColor()
 {
-	switch(this->level)
+	switch(this->Level)
 	{
 	case 0:
 		return FLinearColor(0.65f, 0.553f, 0.0f, 1.0f);

@@ -21,6 +21,7 @@ void AOpenFireGameMode::InitGame(const FString& MapName, const FString& Options,
 	Super::InitGame(MapName, Options, ErrorMessage);
 
 	this->WorldGraph = NewObject<UWorldGraph>(UWorldGraph::StaticClass());
+	this->WorldGraph->Init();
 
 	this->gameObjectManager = NewObject<UGameObjectManager>(UGameObjectManager::StaticClass());
 	this->gameObjectManager->Init(this->GetWorld(), this->WorldGraph);
