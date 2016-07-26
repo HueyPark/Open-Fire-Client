@@ -6,9 +6,10 @@
 #include "GameObject/Strongpoint/Strongpoint.h"
 #include "WorldGraph/Graph.h"
 
-void UGameObjectManager::Init(UWorld* world)
+void UGameObjectManager::Init(UWorld* world, UWorldGraph* WorldGraph)
 {
 	this->world = world;
+	this->WorldGraph = WorldGraph;
 }
 
 void UGameObjectManager::OnUpdate()

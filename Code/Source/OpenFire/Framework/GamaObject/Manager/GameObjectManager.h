@@ -6,6 +6,7 @@
 #include "GameObjectManager.generated.h"
 
 class AStrongpoint;
+class UWorldGraph;
 enum class Request : uint8;
 
 UCLASS()
@@ -19,11 +20,12 @@ public:
 
 private:
 	UWorld* world;
+	UWorldGraph* WorldGraph;
 
 	TMap<FString, AStrongpoint*> strongpointMap;
 
 public:
-	void Init(UWorld* world);
+	void Init(UWorld* world, UWorldGraph* WorldGraph);
 	void OnUpdate();
 
 private:

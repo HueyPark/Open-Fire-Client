@@ -9,4 +9,7 @@ UCLASS()
 class OPENFIRE_API UWorldGraph : public UObject
 {
 	GENERATED_BODY()
+
+public:
+	void OnUpdate();
 };

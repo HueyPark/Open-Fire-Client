@@ -16,7 +16,7 @@ protected:
 	UGameObjectManager* gameObjectManager;
 
 private:
-	UWorldGraph* worldGraph;
+	UWorldGraph* WorldGraph;
 
 public:
 	AOpenFireGameMode();

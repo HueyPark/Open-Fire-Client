@@ -20,10 +20,10 @@ void AOpenFireGameMode::InitGame(const FString& MapName, const FString& Options,
 {
 	Super::InitGame(MapName, Options, ErrorMessage);
 
-	this->gameObjectManager = NewObject<UGameObjectManager>(UGameObjectManager::StaticClass());
-	this->gameObjectManager->Init(this->GetWorld());
+	this->WorldGraph = NewObject<UWorldGraph>(UWorldGraph::StaticClass());
 
-	this->worldGraph = NewObject<UWorldGraph>(UWorldGraph::StaticClass());
+	this->gameObjectManager = NewObject<UGameObjectManager>(UGameObjectManager::StaticClass());
+	this->gameObjectManager->Init(this->GetWorld(), this->WorldGraph);
 }
 
 void AOpenFireGameMode::Tick(float DeltaSeconds)
@@ -34,6 +34,8 @@ void AOpenFireGameMode::Tick(float DeltaSeconds)
 	if (remainingSeconds < 0.0f)
 	{
 		TimeManager::Instance()->RewindSeconds();
+
+		this->WorldGraph->OnUpdate();
 
 		this->gameObjectManager->OnUpdate();
 	}
