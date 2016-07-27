@@ -19,12 +19,12 @@ void UGameObjectManager::OnUpdate()
 	this->_UpdateStrongPoints();
 }
 
-void UGameObjectManager::_SpawnStrongPoint(const int32 Id, const FVector Location, const int32 Level)
+void UGameObjectManager::_SpawnStrongPoint(const UStrongpointModel* Model)
 {
-	AStrongpoint* StrongPoint = this->world->SpawnActor<AStrongpoint>(CLASS_Strongpoint, Location, FRotator::ZeroRotator);
-	StrongPoint->Init(Id, Level);
+	AStrongpoint* StrongPoint = this->world->SpawnActor<AStrongpoint>(CLASS_Strongpoint, Model->Location, FRotator::ZeroRotator);
+	StrongPoint->Init(Model);
 
-	this->StrongPointMap.Add(Id, StrongPoint);
+	this->StrongPointMap.Add(Model->Id, StrongPoint);
 }
 
 void UGameObjectManager::_UpdateStrongPoints()
@@ -33,7 +33,7 @@ void UGameObjectManager::_UpdateStrongPoints()
 	{
 		if (this->StrongPointMap.Find(Model->Id) == nullptr)
 		{
-			this->_SpawnStrongPoint(Model->Id, Model->Location, 1);
+			this->_SpawnStrongPoint(Model);
 		}
 	}
 }

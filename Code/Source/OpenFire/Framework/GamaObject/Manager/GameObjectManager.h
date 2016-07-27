@@ -6,6 +6,7 @@
 #include "GameObjectManager.generated.h"
 
 class AStrongpoint;
+class UStrongpointModel;
 class UWorldGraph;
 enum class Request : uint8;
 
@@ -29,7 +30,7 @@ public:
 	void OnUpdate();
 
 private:
-	void _SpawnStrongPoint(const int32 Id, const FVector Location, const int32 Level);
+	void _SpawnStrongPoint(const UStrongpointModel* Model);
 
 	void _UpdateStrongPoints();
 };

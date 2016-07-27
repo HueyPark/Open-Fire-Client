@@ -5,7 +5,9 @@
 #include "GameObject/GameObject.h"
 #include "StrongPoint.generated.h"
 
+class UResource;
 class UStaticMeshComponent;
+class UStrongpointModel;
 
 UCLASS()
 class OPENFIRE_API AStrongpoint : public AGameObject
@@ -13,16 +15,16 @@ class OPENFIRE_API AStrongpoint : public AGameObject
 	GENERATED_BODY()
 
 protected:
-	int32 Id;
-	int32 Level;
+	UPROPERTY(BlueprintReadOnly)
+	const UStrongpointModel* Model;
 
 public:
 	AStrongpoint();
 
-	void Init(const int32 Id, const int32 Level);
+	void Init(const UStrongpointModel* Model);
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void PostInit(const int32& Id, const int32& Level);
+	void PostInit();
 
 protected:
 	UFUNCTION(BlueprintCallable, Category = "AStrongpoint")

@@ -1,9 +1,8 @@
 #include "OpenFire.h"
 #include "StrongPoint.h"
-#include "WorldGraph/Graph.h"
-#include "WorldGraph/StrongPointData.h"
-#include "Network/RestClient.h"
-#include "Config/Config.h"
+
+#include "Framework/WorldGraph/Model/Strongpoint/StrongpointModel.h"
+
 
 AStrongpoint::AStrongpoint()
 {
@@ -11,17 +10,16 @@ AStrongpoint::AStrongpoint()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
-void AStrongpoint::Init(const int32 Id, const int32 Level)
+void AStrongpoint::Init(const UStrongpointModel* Model)
 {
-	this->Id = Id;
-	this->Level = Level;
+	this->Model = Model;
 
-	this->PostInit(this->Id, this->Level);
+	this->PostInit();
 }
 
 FLinearColor AStrongpoint::_GetColor()
 {
-	switch(this->Level)
+	switch(this->Model->Level)
 	{
 	case 0:
 		return FLinearColor(0.65f, 0.553f, 0.0f, 1.0f);
