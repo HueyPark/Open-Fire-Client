@@ -5,14 +5,14 @@
 
 AGold::AGold()
 {
-	UStaticMeshComponent* StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("VisualRepresentation"));
-	this->RootComponent = StaticMeshComponent;
+	//UStaticMeshComponent* StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("VisualRepresentation"));
+	//this->RootComponent = StaticMeshComponent;
 
-	StaticMeshComponent->SetSimulatePhysics(true);
+	//StaticMeshComponent->SetSimulatePhysics(true);
 
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> StaticMesh(TEXT("/Game/Resource/Resource/Gold/SM_Gold"));
-	if (StaticMesh.Succeeded())
-	{
-		StaticMeshComponent->SetStaticMesh(StaticMesh.Object);
-	}
+	//static ConstructorHelpers::FObjectFinder<UStaticMesh> StaticMesh(TEXT("/Game/Resource/Resource/Gold/SM_Gold"));
+	//if (StaticMesh.Succeeded())
+	//{
+	//	StaticMeshComponent->SetStaticMesh(StaticMesh.Object);
+	//}
 }

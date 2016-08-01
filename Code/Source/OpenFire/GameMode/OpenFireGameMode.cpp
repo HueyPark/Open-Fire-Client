@@ -3,41 +3,8 @@
 #include "OpenFire.h"
 #include "OpenFireGameMode.h"
 #include "OpenFirePlayerController.h"
-#include "Framework/GamaObject/Manager/GameObjectManager.h"
-#include "Framework/WorldGraph/WorldGraph.h"
-#include "GameObject/StrongPoint/StrongPoint.h"
-#include "GameObject/StrongPoint/StrongPointEdge.h"
-#include "Manager/TimeManager.h"
-
-const float updateSeconds = 5.0f;
 
 AOpenFireGameMode::AOpenFireGameMode()
 {
 	this->PlayerControllerClass = AOpenFirePlayerController::StaticClass();
-}
-
-void AOpenFireGameMode::InitGame(const FString& MapName, const FString& Options, FString& ErrorMessage)
-{
-	Super::InitGame(MapName, Options, ErrorMessage);
-
-	this->WorldGraph = NewObject<UWorldGraph>(UWorldGraph::StaticClass());
-	this->WorldGraph->Init();
-
-	this->gameObjectManager = NewObject<UGameObjectManager>(UGameObjectManager::StaticClass());
-	this->gameObjectManager->Init(this->GetWorld(), this->WorldGraph);
-}
-
-void AOpenFireGameMode::Tick(float DeltaSeconds)
-{
-	TimeManager::Instance()->AddSeconds(DeltaSeconds);
-
-	float remainingSeconds = TimeManager::Instance()->GetRemainingSeconds();
-	if (remainingSeconds < 0.0f)
-	{
-		TimeManager::Instance()->RewindSeconds();
-
-		this->WorldGraph->OnUpdate();
-
-		this->gameObjectManager->OnUpdate();
-	}
 }

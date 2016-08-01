@@ -7,23 +7,23 @@
 // Sets default values
 AStrongPointEdge::AStrongPointEdge()
 {
-	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	//// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	//PrimaryActorTick.bCanEverTick = true;
 
-	UStaticMeshComponent* StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("VisualRepresentation"));
-	this->RootComponent = StaticMeshComponent;
+	//UStaticMeshComponent* StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("VisualRepresentation"));
+	//this->RootComponent = StaticMeshComponent;
 
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> StaticMesh(TEXT("/Game/Resource/StaticMesh/Sphere"));
-	StaticMeshComponent->SetRelativeScale3D(FVector(1.0f, 1.0f, 0.5f));
-	if (StaticMesh.Succeeded())
-	{
-		StaticMeshComponent->SetStaticMesh(StaticMesh.Object);
-	}
-	static ConstructorHelpers::FObjectFinder<UMaterial> Material(TEXT("/Game/Resource/Material/Gray"));
-	if (Material.Succeeded())
-	{
-		StaticMeshComponent->SetMaterial(0, Material.Object);
-	}
+	//static ConstructorHelpers::FObjectFinder<UStaticMesh> StaticMesh(TEXT("/Game/Resource/StaticMesh/Sphere"));
+	//StaticMeshComponent->SetRelativeScale3D(FVector(1.0f, 1.0f, 0.5f));
+	//if (StaticMesh.Succeeded())
+	//{
+	//	StaticMeshComponent->SetStaticMesh(StaticMesh.Object);
+	//}
+	//static ConstructorHelpers::FObjectFinder<UMaterial> Material(TEXT("/Game/Resource/Material/Gray"));
+	//if (Material.Succeeded())
+	//{
+	//	StaticMeshComponent->SetMaterial(0, Material.Object);
+	//}
 }
 
 // Called when the game starts or when spawned

@@ -8,14 +8,14 @@
 
 AHero::AHero()
 {
-	this->skeletalMeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("VisualRepresentation"));
-	this->RootComponent = this->skeletalMeshComponent;
+	//this->skeletalMeshComponent = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("VisualRepresentation"));
+	//this->RootComponent = this->skeletalMeshComponent;
 
-	static ConstructorHelpers::FObjectFinder<USkeletalMesh> skeletalMesh(TEXT("/Game/Resource/Hero/SM_Hero"));
-	if (skeletalMesh.Succeeded())
-	{
-		this->skeletalMeshComponent->SetSkeletalMesh(skeletalMesh.Object);
-	}
+	//static ConstructorHelpers::FObjectFinder<USkeletalMesh> skeletalMesh(TEXT("/Game/Resource/Hero/SM_Hero"));
+	//if (skeletalMesh.Succeeded())
+	//{
+	//	this->skeletalMeshComponent->SetSkeletalMesh(skeletalMesh.Object);
+	//}
 }
 
 void AHero::Initialize(int32 objectID, FLinearColor color)

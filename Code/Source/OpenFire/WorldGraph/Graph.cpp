@@ -8,7 +8,6 @@
 #include "Type/MissionType.h"
 #include "GameObject/Building/Mine.h"
 #include "GameObject/Building/Farm.h"
-#include "GameObject/Building/Castle.h"
 #include "GameObject/Unit/Worker.h"
 #include "GameObject/Hero/Hero.h"
 #include "GameObject/Resource/Gold.h"
