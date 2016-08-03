@@ -2,17 +2,18 @@
 
 #pragma once
 
+#include "GameFramework/Character.h"
 #include "Framework/GamaObject/Unit/Unit.h"
-#include "Dino.generated.h"
+#include "Builder.generated.h"
 
 UCLASS()
-class OPENFIRE_API ADino : public AUnit
+class OPENFIRE_API ABuilder : public AUnit
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this character's properties
-	ADino();
+	ABuilder();
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

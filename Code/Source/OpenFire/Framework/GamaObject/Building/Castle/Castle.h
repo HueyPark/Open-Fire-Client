@@ -3,7 +3,7 @@
 #include "GameObject/Building/Building.h"
 #include "Castle.generated.h"
 
-class ADino;
+class ABuilder;
 
 UCLASS()
 class OPENFIRE_API ACastle : public ABuilding
@@ -12,7 +12,7 @@ class OPENFIRE_API ACastle : public ABuilding
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TSubclassOf<ADino> CLASS_Dino;
+	TSubclassOf<ABuilder> CLASS_Builder;
 
 private:
 	float SpawnRemainSeconds;

@@ -1,6 +1,6 @@
 #include "OpenFire.h"
 #include "Castle.h"
-#include "Framework/GamaObject/Unit/Dino/Dino.h"
+#include "Framework/GamaObject/Unit/Builder/Builder.h"
 
 const float SpawnDelaySeconds = 5.0f;
 
@@ -14,7 +14,7 @@ void ACastle::Tick(float DeltaSeconds)
 	this->SpawnRemainSeconds -= DeltaSeconds;
 	if (this->SpawnRemainSeconds < 0.0f)
 	{
-		GetWorld()->SpawnActor<ADino>(this->CLASS_Dino, this->GetActorLocation(), FRotator::ZeroRotator);
+		GetWorld()->SpawnActor<ABuilder>(this->CLASS_Builder, this->GetActorLocation(), FRotator::ZeroRotator);
 		this->SpawnRemainSeconds += SpawnDelaySeconds;
 	}
 }
