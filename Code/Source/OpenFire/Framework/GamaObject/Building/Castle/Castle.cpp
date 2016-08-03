@@ -2,7 +2,7 @@
 #include "Castle.h"
 #include "Framework/GamaObject/Unit/Builder/Builder.h"
 
-const float SpawnDelaySeconds = 5.0f;
+const float SpawnDelaySeconds = 1.0f;
 
 ACastle::ACastle()
 {
