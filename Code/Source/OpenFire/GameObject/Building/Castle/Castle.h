@@ -13,6 +13,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	TSubclassOf<ABuilder> CLASS_Builder;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	class UStaticMeshComponent* StaticMeshComponent;
+
 private:
 	float SpawnRemainSeconds;
 

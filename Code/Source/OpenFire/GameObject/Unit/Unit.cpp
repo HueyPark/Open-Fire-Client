@@ -10,7 +10,7 @@ AUnit::AUnit()
 	PrimaryActorTick.bCanEverTick = true;
 
 	UCapsuleComponent* CapsuleComponent = GetCapsuleComponent();
-	CapsuleComponent->InitCapsuleSize(30.0f, 100.0f);
+	CapsuleComponent->InitCapsuleSize(50.0f, 100.0f);
 	CapsuleComponent->SetSimulatePhysics(true);
 	FBodyInstance* BodyInstance = CapsuleComponent->GetBodyInstance();
 	BodyInstance->bLockRotation = true;
