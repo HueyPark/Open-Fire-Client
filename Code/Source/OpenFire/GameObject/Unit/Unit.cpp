@@ -11,12 +11,6 @@ AUnit::AUnit()
 
 	UCapsuleComponent* CapsuleComponent = GetCapsuleComponent();
 	CapsuleComponent->InitCapsuleSize(50.0f, 100.0f);
-	CapsuleComponent->SetSimulatePhysics(true);
-	FBodyInstance* BodyInstance = CapsuleComponent->GetBodyInstance();
-	BodyInstance->bLockRotation = true;
-	BodyInstance->bLockXRotation = true;
-	BodyInstance->bLockYRotation = true;
-	BodyInstance->bLockZRotation = true;
 
 	GetMesh()->SetRelativeLocation(FVector(0.0f, 0.0f, -100.0f));
 }

@@ -11,6 +11,10 @@ class OPENFIRE_API ABuilder : public AUnit
 	GENERATED_BODY()
 
 public:
+	UPROPERTY(EditAnywhere)
+	class UBehaviorTree* BehaviorTree;
+
+public:
 	// Sets default values for this character's properties
 	ABuilder();
 
