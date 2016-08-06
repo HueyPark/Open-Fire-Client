@@ -2,16 +2,15 @@
 
 #include "OpenFire.h"
 #include "OpenFireGameMode.h"
-#include "OpenFirePlayerController.h"
-#include "OpenFireCharacter.h"
+#include "GameObject/User/UserController.h"
 
 AOpenFireGameMode::AOpenFireGameMode()
 {
 	// use our custom PlayerController class
-	PlayerControllerClass = AOpenFirePlayerController::StaticClass();
+	PlayerControllerClass = AUserController::StaticClass();
 
 	// set default pawn class to our Blueprinted character
-	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/TopDownCPP/Blueprints/TopDownCharacter"));
+	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/Blueprint/GameObject/User/BP_User"));
 	if (PlayerPawnBPClass.Class != NULL)
 	{
 		DefaultPawnClass = PlayerPawnBPClass.Class;

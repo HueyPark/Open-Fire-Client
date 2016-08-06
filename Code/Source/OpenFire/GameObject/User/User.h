@@ -1,15 +1,15 @@
 // Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
 #pragma once
 #include "GameFramework/Character.h"
-#include "OpenFireCharacter.generated.h"
+#include "User.generated.h"
 
 UCLASS(Blueprintable)
-class AOpenFireCharacter : public ACharacter
+class AUser : public ACharacter
 {
 	GENERATED_BODY()
 
 public:
-	AOpenFireCharacter();
+	AUser();
 
 	// Called every frame.
 	virtual void Tick(float DeltaSeconds) override;

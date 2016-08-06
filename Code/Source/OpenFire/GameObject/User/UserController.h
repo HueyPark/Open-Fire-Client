@@ -1,15 +1,15 @@
 // Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
 #pragma once
 #include "GameFramework/PlayerController.h"
-#include "OpenFirePlayerController.generated.h"
+#include "UserController.generated.h"
 
 UCLASS()
-class AOpenFirePlayerController : public APlayerController
+class AUserController : public APlayerController
 {
 	GENERATED_BODY()
 
 public:
-	AOpenFirePlayerController();
+	AUserController();
 
 protected:
 	/** True if the controlled character should navigate to the mouse cursor. */

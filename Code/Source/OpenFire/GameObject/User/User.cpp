@@ -1,14 +1,14 @@
 // Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
 
 #include "OpenFire.h"
-#include "OpenFireCharacter.h"
+#include "User.h"
 #include "Runtime/CoreUObject/Public/UObject/ConstructorHelpers.h"
 #include "Runtime/Engine/Classes/Components/DecalComponent.h"
 
-AOpenFireCharacter::AOpenFireCharacter()
+AUser::AUser()
 {
 	// Set size for player capsule
-	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
+	GetCapsuleComponent()->InitCapsuleSize(50.f, 100.0f);
 
 	// Don't rotate character to camera direction
 	bUseControllerRotationPitch = false;
@@ -37,7 +37,7 @@ AOpenFireCharacter::AOpenFireCharacter()
 	// Create a decal in the world to show the cursor's location
 	CursorToWorld = CreateDefaultSubobject<UDecalComponent>("CursorToWorld");
 	CursorToWorld->SetupAttachment(RootComponent);
-	static ConstructorHelpers::FObjectFinder<UMaterial> DecalMaterialAsset(TEXT("Material'/Game/TopDownCPP/Blueprints/M_Cursor_Decal.M_Cursor_Decal'"));
+	static ConstructorHelpers::FObjectFinder<UMaterial> DecalMaterialAsset(TEXT("Material'/Game/Blueprint/GameObject/User/M_Cursor_Decal.M_Cursor_Decal'"));
 	if (DecalMaterialAsset.Succeeded())
 	{
 		CursorToWorld->SetDecalMaterial(DecalMaterialAsset.Object);
@@ -50,7 +50,7 @@ AOpenFireCharacter::AOpenFireCharacter()
 	PrimaryActorTick.bStartWithTickEnabled = true;
 }
 
-void AOpenFireCharacter::Tick(float DeltaSeconds)
+void AUser::Tick(float DeltaSeconds)
 {
 	if (CursorToWorld != nullptr)
 	{

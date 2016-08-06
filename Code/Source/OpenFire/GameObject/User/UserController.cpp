@@ -1,16 +1,16 @@
 // Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
 
 #include "OpenFire.h"
-#include "OpenFirePlayerController.h"
+#include "UserController.h"
 #include "AI/Navigation/NavigationSystem.h"
 
-AOpenFirePlayerController::AOpenFirePlayerController()
+AUserController::AUserController()
 {
 	bShowMouseCursor = true;
 	DefaultMouseCursor = EMouseCursor::Crosshairs;
 }
 
-void AOpenFirePlayerController::PlayerTick(float DeltaTime)
+void AUserController::PlayerTick(float DeltaTime)
 {
 	Super::PlayerTick(DeltaTime);
 
@@ -21,20 +21,20 @@ void AOpenFirePlayerController::PlayerTick(float DeltaTime)
 	}
 }
 
-void AOpenFirePlayerController::SetupInputComponent()
+void AUserController::SetupInputComponent()
 {
 	// set up gameplay key bindings
 	Super::SetupInputComponent();
 
-	InputComponent->BindAction("SetDestination", IE_Pressed, this, &AOpenFirePlayerController::OnSetDestinationPressed);
-	InputComponent->BindAction("SetDestination", IE_Released, this, &AOpenFirePlayerController::OnSetDestinationReleased);
+	InputComponent->BindAction("SetDestination", IE_Pressed, this, &AUserController::OnSetDestinationPressed);
+	InputComponent->BindAction("SetDestination", IE_Released, this, &AUserController::OnSetDestinationReleased);
 
 	// support touch devices 
-	InputComponent->BindTouch(EInputEvent::IE_Pressed, this, &AOpenFirePlayerController::MoveToTouchLocation);
-	InputComponent->BindTouch(EInputEvent::IE_Repeat, this, &AOpenFirePlayerController::MoveToTouchLocation);
+	InputComponent->BindTouch(EInputEvent::IE_Pressed, this, &AUserController::MoveToTouchLocation);
+	InputComponent->BindTouch(EInputEvent::IE_Repeat, this, &AUserController::MoveToTouchLocation);
 }
 
-void AOpenFirePlayerController::MoveToMouseCursor()
+void AUserController::MoveToMouseCursor()
 {
 	// Trace to see what is under the mouse cursor
 	FHitResult Hit;
@@ -47,7 +47,7 @@ void AOpenFirePlayerController::MoveToMouseCursor()
 	}
 }
 
-void AOpenFirePlayerController::MoveToTouchLocation(const ETouchIndex::Type FingerIndex, const FVector Location)
+void AUserController::MoveToTouchLocation(const ETouchIndex::Type FingerIndex, const FVector Location)
 {
 	FVector2D ScreenSpaceLocation(Location);
 
@@ -61,7 +61,7 @@ void AOpenFirePlayerController::MoveToTouchLocation(const ETouchIndex::Type Fing
 	}
 }
 
-void AOpenFirePlayerController::SetNewMoveDestination(const FVector DestLocation)
+void AUserController::SetNewMoveDestination(const FVector DestLocation)
 {
 	APawn* const Pawn = GetPawn();
 	if (Pawn)
@@ -77,13 +77,13 @@ void AOpenFirePlayerController::SetNewMoveDestination(const FVector DestLocation
 	}
 }
 
-void AOpenFirePlayerController::OnSetDestinationPressed()
+void AUserController::OnSetDestinationPressed()
 {
 	// set flag to keep updating destination until released
 	bMoveToMouseCursor = true;
 }
 
-void AOpenFirePlayerController::OnSetDestinationReleased()
+void AUserController::OnSetDestinationReleased()
 {
 	// clear flag to indicate we should stop updating the destination
 	bMoveToMouseCursor = false;
