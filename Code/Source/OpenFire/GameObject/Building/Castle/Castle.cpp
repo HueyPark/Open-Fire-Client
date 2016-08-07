@@ -6,20 +6,30 @@ const float SpawnDelaySeconds = 1.0f;
 
 ACastle::ACastle()
 {
-	this->StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
-	this->StaticMeshComponent->SetupAttachment(this->RootComponent);
+	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
+	StaticMeshComponent->SetupAttachment(RootComponent);
 
-	this->SpawnRemainSeconds = SpawnDelaySeconds;
+	SpawnRemainSeconds = SpawnDelaySeconds;
 
 	PrimaryActorTick.bCanEverTick = true;
 }
 
 void ACastle::Tick(float DeltaSeconds)
 {
-	this->SpawnRemainSeconds -= DeltaSeconds;
-	if (this->SpawnRemainSeconds < 0.0f)
+	SpawnRemainSeconds -= DeltaSeconds;
+	if (SpawnRemainSeconds < 0.0f)
 	{
-		GetWorld()->SpawnActor<ABuilder>(this->CLASS_Builder, this->GetActorLocation(), FRotator::ZeroRotator);
-		this->SpawnRemainSeconds += SpawnDelaySeconds;
+		_SpawnBuilder();
+
+		SpawnRemainSeconds += SpawnDelaySeconds;
+	}
+}
+
+void ACastle::_SpawnBuilder()
+{
+	ABuilder* Builder = GetWorld()->SpawnActor<ABuilder>(CLASS_Builder, GetActorLocation(), FRotator::ZeroRotator);
+	if (Builder)
+	{
+		Builder->SpawnDefaultController();
 	}
 }

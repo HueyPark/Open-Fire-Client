@@ -23,4 +23,7 @@ public:
 	ACastle();
 
 	virtual void Tick(float DeltaSeconds) override;
+
+private:
+	void _SpawnBuilder();
 };
