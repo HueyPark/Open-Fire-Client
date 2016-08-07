@@ -23,6 +23,7 @@ void ABuilderAI::Possess(APawn* InPawn)
 	{
 		BlackboardComp->InitializeBlackboard(*Builder->BehaviorTree->BlackboardAsset);
 
+		TargetKey = TEXT("Target");
 		TargetKeyID = BlackboardComp->GetKeyID("Target");
 
 		BehaviorTreeComp->StartTree(*Builder->BehaviorTree);

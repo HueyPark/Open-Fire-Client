@@ -11,7 +11,8 @@ class OPENFIRE_API ABuilderAI : public AAIController
 	GENERATED_BODY()
 
 public:
-	uint8 TargetKeyID;
+	FName TargetKey;
+	FBlackboard::FKey TargetKeyID;
 
 private:
 	UPROPERTY(transient)
