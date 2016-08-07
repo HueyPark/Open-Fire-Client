@@ -9,6 +9,8 @@
 
 ABuilderAI::ABuilderAI()
 {
+	TargetKey = TEXT("Target");
+
 	BlackboardComp = CreateDefaultSubobject<UBlackboardComponent>(TEXT("BlackboardComp"));
 
 	BehaviorTreeComp = CreateDefaultSubobject<UBehaviorTreeComponent>(TEXT("BehaviorTreeComp"));
@@ -22,9 +24,6 @@ void ABuilderAI::Possess(APawn* InPawn)
 	if (Builder && Builder->BehaviorTree)
 	{
 		BlackboardComp->InitializeBlackboard(*Builder->BehaviorTree->BlackboardAsset);
-
-		TargetKey = TEXT("Target");
-		TargetKeyID = BlackboardComp->GetKeyID("Target");
 
 		BehaviorTreeComp->StartTree(*Builder->BehaviorTree);
 	}

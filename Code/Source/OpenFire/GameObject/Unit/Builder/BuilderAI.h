@@ -12,7 +12,6 @@ class OPENFIRE_API ABuilderAI : public AAIController
 
 public:
 	FName TargetKey;
-	FBlackboard::FKey TargetKeyID;
 
 private:
 	UPROPERTY(transient)

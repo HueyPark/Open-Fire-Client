@@ -10,7 +10,7 @@ EBTNodeResult::Type UBTTask_MoveToTarget::ExecuteTask(UBehaviorTreeComponent& Ow
 {
 	ABuilderAI* BuilderAI = Cast<ABuilderAI>(OwnerComp.GetAIOwner());
 
-	AActor* Target = Cast<AActor>(OwnerComp.GetBlackboardComponent()->GetValue<UBlackboardKeyType_Object>(BuilderAI->TargetKeyID));
+	AActor* Target = Cast<AActor>(OwnerComp.GetBlackboardComponent()->GetValueAsObject(BuilderAI->TargetKey));
 	if (Target)
 	{
 		BuilderAI->MoveToActor(Target, 5.0f);
