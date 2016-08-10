@@ -5,6 +5,9 @@
 #include "Runtime/CoreUObject/Public/UObject/ConstructorHelpers.h"
 #include "Runtime/Engine/Classes/Components/DecalComponent.h"
 
+const float MIN_CAMERA_ARM_LENGTH = 800.0f;
+const float MAX_CAMERA_ARM_LENGTH = 2000.0f;
+
 AUser::AUser()
 {
 	// Set size for player capsule
@@ -25,7 +28,7 @@ AUser::AUser()
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
 	CameraBoom->bAbsoluteRotation = true; // Don't want arm to rotate when character does
-	CameraBoom->TargetArmLength = 800.f;
+	CameraBoom->TargetArmLength = MIN_CAMERA_ARM_LENGTH;
 	CameraBoom->RelativeRotation = FRotator(-60.f, 0.f, 0.f);
 	CameraBoom->bDoCollisionTest = false; // Don't want to pull camera in when it collides with level
 
@@ -50,6 +53,13 @@ AUser::AUser()
 	PrimaryActorTick.bStartWithTickEnabled = true;
 }
 
+void AUser::SetupPlayerInputComponent(class UInputComponent* InInputComponent)
+{
+	Super::SetupPlayerInputComponent(InInputComponent);
+
+	InInputComponent->BindAxis("Zoom", this, &AUser::_Zoom);
+}
+
 void AUser::Tick(float DeltaSeconds)
 {
 	if (CursorToWorld != nullptr)
@@ -63,5 +73,19 @@ void AUser::Tick(float DeltaSeconds)
 			CursorToWorld->SetWorldLocation(TraceHitResult.Location);
 			CursorToWorld->SetWorldRotation(CursorR);
 		}
+	}
+}
+
+void AUser::_Zoom(float Val)
+{
+	CameraBoom->TargetArmLength -= Val;
+
+	if (CameraBoom->TargetArmLength < MIN_CAMERA_ARM_LENGTH)
+	{
+		CameraBoom->TargetArmLength = MIN_CAMERA_ARM_LENGTH;
+	}
+	else if (MAX_CAMERA_ARM_LENGTH < CameraBoom->TargetArmLength)
+	{
+		CameraBoom->TargetArmLength = MAX_CAMERA_ARM_LENGTH;
 	}
 }

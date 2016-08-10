@@ -11,6 +11,8 @@ class AUser : public ACharacter
 public:
 	AUser();
 
+	virtual void SetupPlayerInputComponent(class UInputComponent* InInputComponent) override;
+
 	// Called every frame.
 	virtual void Tick(float DeltaSeconds) override;
 
@@ -31,5 +33,8 @@ private:
 	/** A decal that projects to the cursor location. */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class UDecalComponent* CursorToWorld;
+
+private:
+	void _Zoom(float Val);
 };
 
