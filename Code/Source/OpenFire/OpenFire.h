@@ -3,7 +3,7 @@
 #ifndef __OPENFIRE_H__
 #define __OPENFIRE_H__
 
-#include "EngineMinimal.h"
+#include "Engine.h"
 
 DECLARE_LOG_CATEGORY_EXTERN(LogOpenFire, Log, All);
 

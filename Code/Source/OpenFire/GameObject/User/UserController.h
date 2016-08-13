@@ -8,13 +8,19 @@ class AUserController : public APlayerController
 {
 	GENERATED_BODY()
 
-public:
-	AUserController();
-
 protected:
 	/** True if the controlled character should navigate to the mouse cursor. */
 	uint32 bMoveToMouseCursor : 1;
 
+private:
+	TSubclassOf<class UUserUI> CLASS_UserUI;
+
+public:
+	AUserController();
+
+	virtual void BeginPlay() override;
+
+protected:
 	// Begin PlayerController interface
 	virtual void PlayerTick(float DeltaTime) override;
 	virtual void SetupInputComponent() override;

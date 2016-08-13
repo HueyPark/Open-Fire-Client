@@ -3,11 +3,29 @@
 #include "OpenFire.h"
 #include "UserController.h"
 #include "AI/Navigation/NavigationSystem.h"
+#include "UserUI.h"
 
 AUserController::AUserController()
 {
 	bShowMouseCursor = true;
 	DefaultMouseCursor = EMouseCursor::Crosshairs;
+
+	static ConstructorHelpers::FClassFinder<UUserUI> UserUIBPClass(TEXT("/Game/Blueprint/GameObject/User/BP_UserUI"));
+	if (UserUIBPClass.Class != nullptr)
+	{
+		CLASS_UserUI = UserUIBPClass.Class;
+	}
+}
+
+void AUserController::BeginPlay()
+{
+	Super::BeginPlay();
+
+	if (CLASS_UserUI != nullptr)
+	{
+		UUserUI* UserUI = CreateWidget<UUserUI>(this, CLASS_UserUI);
+		UserUI->AddToViewport();
+	}
 }
 
 void AUserController::PlayerTick(float DeltaTime)
