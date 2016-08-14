@@ -1,6 +1,6 @@
 #include "OpenFire.h"
 #include "Castle.h"
-#include "../../Unit/Builder/Builder.h"
+#include "GameObject/GameObjectLibrary.h"
 
 const float SpawnDelaySeconds = 1.0f;
 
@@ -27,9 +27,5 @@ void ACastle::Tick(float DeltaSeconds)
 
 void ACastle::_SpawnBuilder()
 {
-	ABuilder* Builder = GetWorld()->SpawnActor<ABuilder>(CLASS_Builder, GetActorLocation(), FRotator::ZeroRotator);
-	if (Builder)
-	{
-		Builder->SpawnDefaultController();
-	}
+	UGameObjectLibrary::SpawnBuilder(GetWorld(), GetActorLocation());
 }
