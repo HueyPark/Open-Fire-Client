@@ -15,6 +15,5 @@ void UBTService_FindRandomLocation::TickNode(UBehaviorTreeComponent& OwnerComp, 
 		FNavLocation NavLocation = GetWorld()->GetNavigationSystem()->GetMainNavData()->GetRandomPoint();
 
 		OwnerComp.GetBlackboardComponent()->SetValueAsVector(BuilderAI->TargetKey, NavLocation.Location);
-		UE_LOG(LogTemp, Warning, TEXT("Target Find"));
 	}
 }

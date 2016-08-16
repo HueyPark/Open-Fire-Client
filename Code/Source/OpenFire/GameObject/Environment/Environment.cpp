@@ -7,7 +7,8 @@
 AEnvironment::AEnvironment()
 {
 	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
-	StaticMeshComponent->SetupAttachment(RootComponent);
+	StaticMeshComponent->SetSimulatePhysics(true);
+	RootComponent = StaticMeshComponent;
 }
 
 // Called when the game starts or when spawned

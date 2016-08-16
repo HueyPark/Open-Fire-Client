@@ -2,6 +2,8 @@
 
 #include "OpenFire.h"
 #include "User.h"
+
+#include "GameObject/GameObjectLibrary.h"
 #include "Runtime/CoreUObject/Public/UObject/ConstructorHelpers.h"
 #include "Runtime/Engine/Classes/Components/DecalComponent.h"
 
@@ -74,6 +76,11 @@ void AUser::Tick(float DeltaSeconds)
 			CursorToWorld->SetWorldRotation(CursorR);
 		}
 	}
+}
+
+void AUser::SpawnTree()
+{
+	UGameObjectLibrary::SpawnTree(GetWorld(), GetActorLocation());
 }
 
 void AUser::_Zoom(float Val)

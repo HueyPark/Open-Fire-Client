@@ -13,8 +13,9 @@ public:
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* InInputComponent) override;
 
-	// Called every frame.
 	virtual void Tick(float DeltaSeconds) override;
+
+	void SpawnTree();
 
 	/** Returns TopDownCameraComponent subobject **/
 	FORCEINLINE class UCameraComponent* GetTopDownCameraComponent() const { return TopDownCameraComponent; }

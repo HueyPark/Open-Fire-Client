@@ -13,5 +13,9 @@ class OPENFIRE_API UGameObjectLibrary : public UObject
 public:
 	UGameObjectLibrary();
 
-	static void SpawnBuilder(UWorld* InWorld, FVector InLocation);
+	static void SpawnBuilder(UWorld* InWorld, const FVector InLocation);
+	static void SpawnTree(UWorld* InWorld, const FVector InLocation);
+
+private:
+	static const FVector _GetSpawnLocation(const FVector InLocation);
 };

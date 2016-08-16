@@ -20,6 +20,5 @@ void UBTService_FindTarget::TickNode(UBehaviorTreeComponent& OwnerComp, uint8* N
 		APawn* Pawn = GetWorld()->GetFirstPlayerController()->GetPawn();
 
 		OwnerComp.GetBlackboardComponent()->SetValueAsObject(BuilderAI->TargetKey, Pawn);
-		UE_LOG(LogTemp, Warning, TEXT("Target Find"));
 	}
 }

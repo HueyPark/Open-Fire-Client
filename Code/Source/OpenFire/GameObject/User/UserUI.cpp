@@ -2,3 +2,15 @@
 
 #include "OpenFire.h"
 #include "UserUI.h"
+
+#include "User.h"
+
+void UUserUI::NativeConstruct()
+{
+	User = Cast<AUser>(GetOwningPlayerPawn());
+}
+
+void UUserUI::SpawnTree()
+{
+	User->SpawnTree();
+}
