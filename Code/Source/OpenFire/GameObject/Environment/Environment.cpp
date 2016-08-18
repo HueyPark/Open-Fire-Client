@@ -3,22 +3,15 @@
 #include "OpenFire.h"
 #include "Environment.h"
 
-// Sets default values
 AEnvironment::AEnvironment()
 {
 	StaticMeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("StaticMeshComponent"));
 	StaticMeshComponent->SetSimulatePhysics(true);
+	FBodyInstance* BodyInstance = StaticMeshComponent->GetBodyInstance();
+	BodyInstance->bLockXRotation = true;
+	BodyInstance->bLockYRotation = true;
+	BodyInstance->bLockZRotation = true;
 	RootComponent = StaticMeshComponent;
-}
 
-// Called when the game starts or when spawned
-void AEnvironment::BeginPlay()
-{
-	Super::BeginPlay();
-}
-
-// Called every frame
-void AEnvironment::Tick( float DeltaTime )
-{
-	Super::Tick( DeltaTime );
+	PrimaryActorTick.bCanEverTick = true;
 }

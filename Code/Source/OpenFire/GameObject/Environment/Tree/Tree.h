@@ -9,4 +9,13 @@ UCLASS()
 class OPENFIRE_API ATree : public AEnvironment
 {
 	GENERATED_BODY()
+
+protected:
+	UPROPERTY(BlueprintReadOnly)
+	float Size;
+
+public:
+	ATree();
+
+	virtual void Tick(float DeltaSeconds) override;
 };
